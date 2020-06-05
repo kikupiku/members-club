@@ -1,0 +1,27 @@
+extends layout
+
+block content
+  h1= title
+
+  if (currentUser)
+    h1 WELCOME BACK #{currentUser.firstName}
+    a(href='/log-out') LOG OUT
+    a(href='/new-message') ADD NEW MESSAGE
+  else
+    div.log-container 
+      a(href='/log-in') log in
+      a(href='/sign-up') sign up
+      p Log in to be able to add messages
+      
+  div.messages-wrapper
+    for message in messages
+      div.message-container
+        if (currentUser)
+          h2= message.author
+        else
+          h2 Anonymous
+        
+        p= message.title
+        p= message.content
+        p= message.date
+        

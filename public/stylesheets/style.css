@@ -1,0 +1,32 @@
+body {
+  padding: 50px;
+  font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+}
+
+a {
+  color: #00B7FF;
+}
+
+/* ================
+INDEX
+================= */
+
+.messages-wrapper {
+  border: 1px solid black;
+  width: 90%;
+  margin: 0 auto;
+  height: auto;
+}
+
+/* =================
+SIGN-UP
+================= */
+
+.form-wrapper {
+  display: flex;
+  width: 100%;
+}
+
+.error-container {
+  color: red;
+}
