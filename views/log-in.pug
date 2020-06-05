@@ -5,10 +5,15 @@ block content
   h1= title
   
   form(action='/log-in' method='POST')
-    label(for='username') Username
-    input(name='username' placeholder='username' type='text')
+    label(for='email') E-mail
+    input(name='email' placeholder='example@mail.com' type='text')
     br
     label(for='password') Password
     input(name='password' type='password')
     br
     button(type='submit') Log In
+
+  if (errors)
+  for error in errors
+    p= error
+    

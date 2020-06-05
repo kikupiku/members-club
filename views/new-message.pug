@@ -3,3 +3,14 @@ extends layout
 block content
   
   h1= title
+
+  form(action='/new-message' method='POST')
+    label(for='msgTitle') Message Title:
+    input(type='text' id='msgTitle' name='msgTitle')
+    br
+    label(for='msgContent') Message Content:
+    input(type='text' id='msgContent' name='msgContent')
+    br
+    input(type='hidden' name='msgAuthor' value=currentUser.email)
+    button(type='submit') ADD
+    

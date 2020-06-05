@@ -8,6 +8,7 @@ let bcrypt = require('bcryptjs');
 
 exports.index = function (req, res, next) {
   Message.find({})
+  .populate('author')
   .exec(function (err, messages) {
     if (err) {
       return next(err);
@@ -29,7 +30,7 @@ exports.user_create_post = [
   body('firstName')
   .trim()
   .isLength({ min: 1 })
-  .withMessage('You cannot leave this field empty')
+  .withMessage('Please enter your first name')
   .isAlpha()
   .withMessage('The first name must be only alphabetical characters. Sorry, Elon Musk\'s daugther!')
   .escape(),
@@ -37,7 +38,7 @@ exports.user_create_post = [
   body('lastName')
   .trim()
   .isLength({ min: 1 })
-  .withMessage('You cannot leave this field empty')
+  .withMessage('You cannot leave your last name empty')
   .isAlpha()
   .withMessage('The last name must be alphabetical characters')
   .escape(),
@@ -45,8 +46,7 @@ exports.user_create_post = [
   body('email')
   .trim()
   .isEmail()
-  .withMessage('It has to be a real email address')
-  .escape(),
+  .withMessage('It has to be a real email address'),
 
   body('password')
   .trim()
@@ -105,7 +105,8 @@ exports.user_create_post = [
 ];
 
 exports.user_log_in_get = function (req, res, next) {
-  res.render('log-in', { title: 'Sign In', user: '' });
+  let errors = req.flash('error');
+  res.render('log-in', { title: 'Sign In', errors: errors });
 };
 
 exports.user_log_in_post = [
@@ -121,10 +122,10 @@ exports.user_log_out_get = function (req, res, next) {
   res.redirect('/');
 };
 
-exports.membership_get = function (req, res, next) {
+exports.level_up_get = function (req, res, next) {
   res.send('NOT IMPLEMENTED YET: membership GET');
 };
 
-exports.membership_post = function (req, res, next) {
+exports.level_up_post = function (req, res, next) {
   res.send('NOT IMPLEMENTED YET: membership POST');
 };

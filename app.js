@@ -32,14 +32,19 @@ app.set('view engine', 'pug');
 app.use(session({ secret: 'cats', resave: false, saveUninitialized: true }));
 
 passport.use(
-  new LocalStrategy((email, password, done) => {
-    User.findOne({ email: email }, (err, user) => {
+  new LocalStrategy({
+    usernameField: 'email',
+    passwordField: 'password',
+  }, (username, password, done) => {
+    User.findOne({ email: username }, (err, user) => {
       if (err) {
         return done(err);
       }
+      console.log('username: ', username);
+      console.log('user: ', user);
 
       if (!user) {
-        return done(null, false, { message: 'Incorrect email.' });
+        return done(null, false, { message: 'Incorrect email' });
       }
 
       bcrypt.compare(password, user.password, (err, res) => {

@@ -13,7 +13,7 @@ let UserSchema = new Schema({
 UserSchema
 .virtual('fullName')
 .get(function () {
-  return firstName + ' ' + lastName;
+  return this.firstName + ' ' + this.lastName;
 });
 
 module.exports = mongoose.model('User', UserSchema);

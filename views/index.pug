@@ -16,8 +16,9 @@ block content
   div.messages-wrapper
     for message in messages
       div.message-container
-        if (currentUser)
-          h2= message.author
+        if (currentUser.isMember == true)
+          ///have to figure out what to do when logged out so there is not currentUser
+          h2= message.author.fullName
         else
           h2 Anonymous
         

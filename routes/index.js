@@ -13,8 +13,8 @@ router.post('/sign-up', userController.user_create_post);
 router.get('/log-in', userController.user_log_in_get);
 router.post('/log-in', userController.user_log_in_post);
 router.get('/log-out', userController.user_log_out_get);
-router.get('/membership', userController.membership_get);
-router.post('/membership', userController.membership_post);
+router.get('/level-up', userController.level_up_get);
+router.post('/level-up', userController.level_up_post);
 
 // MESSAGE ROUTES //
 router.get('/new-message', messageController.message_create_get);
