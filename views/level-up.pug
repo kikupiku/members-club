@@ -2,22 +2,28 @@ extends layout
 
 block content
   
-  h1= title
+  h1.title= title
   
   if (currentUser)
     if (!currentUser.isMember)
       form(action='/level-up' method="POST")
         label(for='become-member') Put in the secret membership password:
+        br
         input(id='become-member' type='password' name='becomeMember')
-        button(type='submit') LEVEL UP
+        br
+        button.upgrade-btn(type='submit') LEVEL UP
       if (unsuccessfulMsg) 
         p.unsuccesfulLvlUp= unsuccessfulMsg
     else if (!currentUser.isAdmin && currentUser.isMember)
       form(action='/level-up' method="POST")
         label(for='become-admin') Put in the secret admin password:
-        input(id='b ecome-admin' type='password' name='becomeAdmin')
-        button(type='submit') LEVEL UP
+        br
+        input(id='become-admin' type='password' name='becomeAdmin')
+        br
+        button.upgrade-btn(type='submit') LEVEL UP
       if (unsuccessfulMsg) 
         p.unsuccesfulLvlUp= unsuccessfulMsg
   else
     p You do not have access to any level up options yet.
+
+  a(href='/' class='back') &#8617; back to the main page

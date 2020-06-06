@@ -2,7 +2,7 @@ extends layout
 
 block content
   
-  h1= title
+  h1.title= title
 
   form(action='/new-message' method='POST')
     label(for='msgTitle') Message Title:
@@ -14,3 +14,4 @@ block content
     input(type='hidden' name='msgAuthor' value=currentUser.email)
     button(type='submit') ADD
     
+  a(href='/' class='back') &#8617; back to the main page

@@ -2,7 +2,7 @@ extends layout
 
 block content
   
-  h1= title
+  h1.title= title
   
   div.form-wrapper
     div.form-container
@@ -13,10 +13,10 @@ block content
         label(for='lastName') Last Name:
         input(name='lastName' placeholder='Smith' type='text' value=(lastName == undefined ? '' : lastName))
         br
-        label(for='email') E-mail:
+        label.sign-up-mail(for='email') E-mail:
         input(name='email' placeholder='email@address.com' type='email' value=(email == undefined ? '' : email))
         br
-        label(for='password') Password:
+        label.sign-up-password(for='password') Password:
         input(name='password' type='password')
         br
         label(for='passwordConfirm') Confirm Password:
@@ -27,6 +27,8 @@ block content
     div.error-container
       if errors
         for error in errors
-          p= error.msg
+          p.err-msg * #{error.msg}
       if passwordConfirmFail
-        p= passwordConfirmFail
+        p.err-msg * #{passwordConfirmFail}
+  
+  a(href='/' class='back') &#8617; back to the main page

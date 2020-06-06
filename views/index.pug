@@ -5,27 +5,31 @@ block content
   if (currentUser)
     div.log-container
       if (currentUser.isMember && !currentUser.isAdmin)
-        a(href='/level-up' class='link-btn') BECOME AN ADMIN
+        a(href='/level-up' class='link-btn lvl-up-btn') become an admin
       else if (!currentUser.isMember)
-        a(href='/level-up' class='link-btn') BECOME A MEMBER
-      a(href='/log-out' class='link-btn') LOG OUT
+        a(href='/level-up' class='link-btn lvl-up-btn') become a member
+      a(href='/log-out' class='link-btn log-out-btn') log out
   else
     div.log-container 
-      a(href='/log-in' class='link-btn') log in
-      a(href='/sign-up' class='link-btn') sign up
+      a(href='/log-in' class='link-btn lvl-up-btn') log in
+      a(href='/sign-up' class='link-btn lvl-up-btn') sign up
   
-  h1= title
+  h1.title= title
 
   if (currentUser)
     if (currentUser.isMember && !currentUser.isAdmin)
-      p.welcome-msg Welcome back, member #{currentUser.firstName}!
+      h3.welcome-msg Welcome back, member #{currentUser.firstName}!
     else if (currentUser.isAdmin)
-      p.welcome-msg Welcome back, admin #{currentUser.firstName}!
+      h3.welcome-msg Welcome back, admin #{currentUser.firstName}!
     else
-      p.welcome-msg Welcome back, #{currentUser.firstName}!
-    a(href='/new-message' class='add-msg') ADD NEW MESSAGE
+      h3.welcome-msg Welcome back, #{currentUser.firstName}!
+    a(href='/new-message' class='add-msg') &#xFF0B; ADD NEW MESSAGE
   else
-    p.welcome-msg Log in to be able to add messages
+    h3.welcome-msg Log in to be able to add messages. 
+      br
+      | Become a MEMBER of the inner circle to see who posted the messages. 
+      br
+      | Upgrade to ADMIN to have the power to delete skanky messages.
       
   div.messages-wrapper
     for message in messages
@@ -39,14 +43,14 @@ block content
         div.message-info
           if (currentUser)
             if (currentUser.isMember == true)
-              h2= message.author.fullName
+              h2.name by #{message.author.fullName}
             else
-              h2 Anonymous
+              h2.name Anonymous author
           else
-            h2 Anonymous
-          p= message.title
-          p= message.content
+            h2.name Anonymous author
+          p.msg-title (#{message.title})
+          p.content= message.content
           if (currentUser)
             if (currentUser.isMember == true)
-              p= message.dateFormatted
+              p.date= message.dateFormatted
         

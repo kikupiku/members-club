@@ -2,18 +2,21 @@ extends layout
 
 block content
   
-  h1= title
+  h1.title= title
   
-  form(action='/log-in' method='POST')
-    label(for='email') E-mail
-    input(name='email' placeholder='example@mail.com' type='text')
-    br
-    label(for='password') Password
-    input(name='password' type='password')
-    br
-    button(type='submit') Log In
+  div.form-wrapper
+    form(action='/log-in' method='POST')
+      label.log-in-email(for='email') E-mail:
+      input(name='email' placeholder='example@mail.com' type='text')
+      br
+      label.log-in-password(for='password') Password:
+      input(name='password' type='password')
+      br
+      button(type='submit') Log In
 
-  if (errors)
-  for error in errors
-    p= error
+    if (errors)
+    for error in errors
+      p.error-msg *#{error}
+      
+    a(href='/' class='back') &#8617; back to the main page
     

@@ -1,32 +1,332 @@
+/* http://meyerweb.com/eric/tools/css/reset/
+   v2.0 | 20110126
+   License: none (public domain)
+*/
+
+html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+b, u, i, center,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, embed,
+figure, figcaption, footer, header, hgroup,
+menu, nav, output, ruby, section, summary,
+time, mark, audio, video {
+	margin: 0;
+	padding: 0;
+	border: 0;
+	font-size: 100%;
+	font: inherit;
+	vertical-align: baseline;
+}
+/* HTML5 display-role reset for older browsers */
+article, aside, details, figcaption, figure,
+footer, header, hgroup, menu, nav, section {
+	display: block;
+}
 body {
-  padding: 50px;
-  font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+	line-height: 1;
+}
+ol, ul {
+	list-style: none;
+}
+blockquote, q {
+	quotes: none;
+}
+blockquote:before, blockquote:after,
+q:before, q:after {
+	content: '';
+	content: none;
+}
+table {
+	border-collapse: collapse;
+	border-spacing: 0;
 }
 
-a {
-  color: #00B7FF;
+/* ===========================================
+GENERAL
+=========================================== =*/
+
+body {
+  font-family: sans-serif;
+  background-color: black;
 }
 
-/* ================
+h1 {
+  font-size: 32px;
+  font-weight: bold;
+}
+
+.title {
+  margin: 50px 0 40px 50px;
+  color: rgb(199,180,180);
+}
+
+.layout-div {
+  background-color: rgb(235,215,215);
+  border-radius: 30px;
+  position: absolute;
+  top: 30px;
+  right: 30px;
+  bottom: 30px;
+  left: 30px;
+  z-index: 10;
+}
+
+.hush {
+  position: absolute;
+  right: -2px;
+}
+
+/* ===========================================
 INDEX
-================= */
+=========================================== =*/
+
+.log-container {
+  position: absolute;
+  top: 15px;
+  right: 20px;
+  height: 50px;
+}
+
+.link-btn {
+  height: 40px;
+  padding: 5px;
+  text-decoration: none;
+  border-radius: 5px;
+  background-color: rgb(136,148,135);
+  color: white;
+  font-weight: bold;
+  margin: 2px;
+}
+
+.link-btn:hover {
+  cursor: pointer;
+
+}
+
+.log-out-btn:hover {
+  background-color: rgb(175,90,59);
+}
+
+.lvl-up-btn:hover {
+  background-color: rgb(157,193,144);
+}
+
+.link-btn:active {
+  transform: translate(0, 3px);
+}
+
+.welcome-msg {
+  margin: 0 auto 25px auto;
+  display: block;
+  background-color: rgb(65,58,82);
+  color: rgb(198,193,208);
+  padding: 5px;
+  width: 480px;
+  border-radius: 5px;
+  text-align: center;
+  font-size: 14px;
+  z-index: 1000;
+  position: relative;
+}
+
+.add-msg {
+  color: rgb(199,180,180);
+  padding: 5px;
+  border-radius: 5px;
+  display: block;
+  position: relative;
+  width: 90%;
+  margin: 0 auto 3px auto;
+  text-decoration: none;
+}
+
+.add-msg:hover {
+  text-decoration: underline;
+  font-weight: bold;
+}
 
 .messages-wrapper {
-  border: 1px solid black;
+  border: 3px solid black;
   width: 90%;
   margin: 0 auto;
-  height: auto;
+  height: 70vh;
+  position: relative;
+  overflow-y: scroll;
 }
 
-/* =================
+::-webkit-scrollbar {
+  background: transparent;
+  width: 0;
+}
+
+.message-container {
+  display: flex;
+  width: 100%;
+  border-bottom: 1px dashed black;
+  min-height: 75px;
+  padding: 5px;
+}
+
+.msg-delete-btn {
+  background-color: transparent;
+  border: none;
+  padding: 8px;
+  margin-top: 25px;
+}
+
+.message-info {
+  width: 100%;
+  position: relative;
+}
+
+.msg-delete-btn:hover {
+  transform: scale(1.2);
+}
+
+.name {
+  margin: 4px 0 4px 0;
+  color: rgb(199,180,180);
+}
+
+.msg-title {
+  color: rgb(199,180,180);
+  font-weight: bold;
+  margin-bottom: 5px;
+}
+
+.content {
+  font-size: 20px;
+}
+
+.date {
+  text-align: right;
+  margin-right: 30px;
+}
+
+/* ===========================================
 SIGN-UP
-================= */
+============================================ */
 
 .form-wrapper {
   display: flex;
+  flex-direction: column;
   width: 100%;
 }
 
 .error-container {
-  color: red;
+  color: rgb(173,54,103);
+  margin-top: 15px;
+}
+
+.err-msg {
+  margin-bottom: 3px;
+}
+
+label[for='firstName'] {
+  margin-right: 55px !important;
+}
+
+label[for='lastName'] {
+  margin-right: 56px !important;
+}
+
+.sign-up-mail {
+  margin-right: 88px !important;
+}
+
+.sign-up-password {
+  margin-right: 63px;
+}
+
+label[for='passwordConfirm'] {
+  margin-right: 3px;
+}
+
+/* =========================================
+LOG-IN
+=========================================== */
+
+.form-wrapper {
+  margin-left: 30px;
+}
+
+input {
+  margin-bottom: 5px;
+  border: 1px solid black;
+  height: 15px;
+  padding: 3px;
+}
+
+.log-in-email {
+  margin-right: 40px;
+}
+
+.log-in-password {
+  margin-right: 15px;
+}
+
+button[type='submit'] {
+  height: 25px;
+  margin-top: 10px;
+}
+
+.back {
+  position: absolute;
+  bottom: 10px;
+  right: 20px;
+  text-decoration: none;
+  color: black;
+}
+
+.back:hover {
+  text-decoration: underline;
+  font-weight: bold;
+}
+
+.error-msg {
+  color: rgb(173,54,103);
+  margin-left: 5px;
+  margin-top: 3px;
+}
+
+/* =======================================
+NEW MESSAGE, LEVEL UP
+======================================= */
+
+form[action='/new-message'],
+form[action='/level-up'] {
+  margin-left: 30px;
+}
+
+label[for='msgTitle'] {
+  margin-right: 40px;
+}
+
+label[for='msgContent'] {
+  margin-right: 13px;
+}
+
+#msgTitle {
+  width: 250px;
+}
+
+textarea {
+  width: 252px;
+  height: 50px;
+}
+
+#become-member,
+#become-admin {
+  margin-top: 10px;
+}
+
+.upgrade-btn:hover {
+  background-color: rgb(150,47,30);
+  color: white;
 }

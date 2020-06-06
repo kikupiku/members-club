@@ -15,7 +15,7 @@ exports.index = function (req, res, next) {
     }
 
     res.render('index', {
-      title: 'Whisper campaign',
+      title: '(Whisper campaign)',
       messages: messages,
     });
     return;
