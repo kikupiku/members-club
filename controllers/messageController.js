@@ -60,5 +60,18 @@ exports.message_create_post = [
 ];
 
 exports.message_delete_post = function (req, res, next) {
-  res.send('NOT IMPLEMENTED YET: message delete POST');
+  Message.findById(req.body.msgId)
+  .exec(function (err, message) {
+    if (err) {
+      return next(err);
+    }
+
+    Message.findByIdAndRemove(req.body.msgDeleteId, function deleteMessage(err) {
+      if (err) {
+        return next(err);
+      }
+
+      res.redirect('/');
+    });
+  });
 };

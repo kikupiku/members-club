@@ -19,7 +19,7 @@ router.post('/level-up', userController.level_up_post);
 // MESSAGE ROUTES //
 router.get('/new-message', messageController.message_create_get);
 router.post('/new-message', messageController.message_create_post);
-router.post('/delete-message', messageController.message_delete_post);
+router.post('/', messageController.message_delete_post);
 
 router.use(function (err, req, res, next) {
   if (err) {

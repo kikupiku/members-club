@@ -1,28 +1,52 @@
 extends layout
 
 block content
+  
+  if (currentUser)
+    div.log-container
+      if (currentUser.isMember && !currentUser.isAdmin)
+        a(href='/level-up' class='link-btn') BECOME AN ADMIN
+      else if (!currentUser.isMember)
+        a(href='/level-up' class='link-btn') BECOME A MEMBER
+      a(href='/log-out' class='link-btn') LOG OUT
+  else
+    div.log-container 
+      a(href='/log-in' class='link-btn') log in
+      a(href='/sign-up' class='link-btn') sign up
+  
   h1= title
 
   if (currentUser)
-    h1 WELCOME BACK #{currentUser.firstName}
-    a(href='/log-out') LOG OUT
-    a(href='/new-message') ADD NEW MESSAGE
+    if (currentUser.isMember && !currentUser.isAdmin)
+      p.welcome-msg Welcome back, member #{currentUser.firstName}!
+    else if (currentUser.isAdmin)
+      p.welcome-msg Welcome back, admin #{currentUser.firstName}!
+    else
+      p.welcome-msg Welcome back, #{currentUser.firstName}!
+    a(href='/new-message' class='add-msg') ADD NEW MESSAGE
   else
-    div.log-container 
-      a(href='/log-in') log in
-      a(href='/sign-up') sign up
-      p Log in to be able to add messages
+    p.welcome-msg Log in to be able to add messages
       
   div.messages-wrapper
     for message in messages
       div.message-container
-        if (currentUser.isMember == true)
-          ///have to figure out what to do when logged out so there is not currentUser
-          h2= message.author.fullName
-        else
-          h2 Anonymous
-        
-        p= message.title
-        p= message.content
-        p= message.date
+        div.delete-div
+        if (currentUser)
+          if (currentUser.isAdmin)
+              form(action='/' method='POST')
+                input(type='hidden' id='msgDelete' name='msgDeleteId' value=message._id)
+                button(type='submit' class='msg-delete-btn') &#10060;
+        div.message-info
+          if (currentUser)
+            if (currentUser.isMember == true)
+              h2= message.author.fullName
+            else
+              h2 Anonymous
+          else
+            h2 Anonymous
+          p= message.title
+          p= message.content
+          if (currentUser)
+            if (currentUser.isMember == true)
+              p= message.dateFormatted
         

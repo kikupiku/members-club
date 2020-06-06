@@ -15,7 +15,7 @@ exports.index = function (req, res, next) {
     }
 
     res.render('index', {
-      title: 'Insiders',
+      title: 'Whisper campaign',
       messages: messages,
     });
     return;
@@ -123,9 +123,65 @@ exports.user_log_out_get = function (req, res, next) {
 };
 
 exports.level_up_get = function (req, res, next) {
-  res.send('NOT IMPLEMENTED YET: membership GET');
+  res.render('level-up', { title: 'Level Up' });
 };
 
-exports.level_up_post = function (req, res, next) {
-  res.send('NOT IMPLEMENTED YET: membership POST');
-};
+exports.level_up_post = [
+  body('becomeMember')
+  .trim()
+  .escape(),
+
+  (req, res, next) => {
+    if (!req.user.isMember) {
+      let user = new User({
+        firstName: req.user.firstName,
+        lastName: req.user.lastName,
+        email: req.user.email,
+        password: req.user.password,
+        isAdmin: false,
+        isMember: true,
+        _id: req.user._id,
+      });
+
+      let memberPassword = process.env.MEMBER_LVL_UP;
+
+      if (req.body.becomeMember === memberPassword) {
+        User.findByIdAndUpdate(req.user._id, user, {}, function (err, upgradedUser) {
+          if (err) {
+            return next(err);
+          }
+
+          res.redirect('/');
+        });
+      } else {
+        let unsuccessfulMsg = 'That is not the password. You will remain a regular user for now.';
+        res.render('level-up', { title: 'Level Up', unsuccessfulMsg: unsuccessfulMsg });
+      }
+    } else if (req.user.isMember && !req.user.isAdmin) {
+      let adminPassword = process.env.ADMIN_LVL_UP;
+
+      let user = new User({
+        firstName: req.user.firstName,
+        lastName: req.user.lastName,
+        email: req.user.email,
+        password: req.user.password,
+        isAdmin: true,
+        isMember: true,
+        _id: req.user._id,
+      });
+
+      if (req.body.becomeAdmin === adminPassword) {
+        User.findByIdAndUpdate(req.user._id, user, {}, function (err, upgradedUser) {
+          if (err) {
+            return next(err);
+          }
+
+          res.redirect('/');
+        });
+      } else {
+        let unsuccessfulMsg = 'That is not the password. You will remain a member without the right to delete messages for now.';
+        res.render('level-up', { title: 'Level Up', unsuccessfulMsg: unsuccessfulMsg });
+      }
+    }
+  },
+];
