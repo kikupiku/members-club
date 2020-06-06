@@ -330,3 +330,9 @@ textarea {
   background-color: rgb(150,47,30);
   color: white;
 }
+
+input,
+textarea {
+  z-index: 9999;
+  position: relative;
+}
