@@ -47,6 +47,13 @@ table {
 	border-spacing: 0;
 }
 
+/*
+* Prefixed by https://autoprefixer.github.io
+* PostCSS: v7.0.29,
+* Autoprefixer: v9.7.6
+* Browsers: last 4 version
+*/
+
 /* ===========================================
 GENERAL
 =========================================== =*/
@@ -87,21 +94,21 @@ INDEX
 =========================================== =*/
 
 .log-container {
+	height: 50px;
   position: absolute;
-  top: 15px;
   right: 20px;
-  height: 50px;
+	top: 15px;
 }
 
 .link-btn {
+	background-color: rgb(136,148,135);
+	border-radius: 5px;
+	color: white;
+	font-weight: bold;
   height: 40px;
-  padding: 5px;
-  text-decoration: none;
-  border-radius: 5px;
-  background-color: rgb(136,148,135);
-  color: white;
-  font-weight: bold;
-  margin: 2px;
+	margin: 2px;
+	padding: 5px;
+	text-decoration: none;
 }
 
 .link-btn:hover {
@@ -118,46 +125,48 @@ INDEX
 }
 
 .link-btn:active {
-  transform: translate(0, 3px);
+  -webkit-transform: translate(0, 3px);
+      -ms-transform: translate(0, 3px);
+          transform: translate(0, 3px);
 }
 
 .welcome-msg {
-  margin: 0 auto 25px auto;
-  display: block;
-  background-color: rgb(65,58,82);
-  color: rgb(198,193,208);
-  padding: 5px;
-  width: 480px;
-  border-radius: 5px;
-  text-align: center;
-  font-size: 14px;
-  z-index: 1000;
+	background-color: rgb(65,58,82);
+	border-radius: 5px;
+	color: rgb(198,193,208);
+	display: block;
+	font-size: 14px;
+	margin: 0 auto 25px auto;
+	padding: 5px;
   position: relative;
+	text-align: center;
+	width: 480px;
+	z-index: 1000;
 }
 
 .add-msg {
+	border-radius: 5px;
   color: rgb(199,180,180);
-  padding: 5px;
-  border-radius: 5px;
   display: block;
-  position: relative;
-  width: 90%;
   margin: 0 auto 3px auto;
+	padding: 5px;
+	position: relative;
   text-decoration: none;
+	width: 90%;
 }
 
 .add-msg:hover {
+	font-weight: bold;
   text-decoration: underline;
-  font-weight: bold;
 }
 
 .messages-wrapper {
   border: 3px solid black;
-  width: 90%;
+	height: 70vh;
   margin: 0 auto;
-  height: 70vh;
-  position: relative;
   overflow-y: scroll;
+	position: relative;
+	width: 90%;
 }
 
 ::-webkit-scrollbar {
@@ -166,32 +175,36 @@ INDEX
 }
 
 .message-container {
+	border-bottom: 1px dashed black;
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
-  width: 100%;
-  border-bottom: 1px dashed black;
   min-height: 75px;
   padding: 5px;
+	width: 100%;
 }
 
 .msg-delete-btn {
   background-color: transparent;
   border: none;
+	margin-top: 25px;
   padding: 8px;
-  margin-top: 25px;
 }
 
 .message-info {
+	position: relative;
   width: 100%;
-  position: relative;
 }
 
 .msg-delete-btn:hover {
-  transform: scale(1.2);
+  -webkit-transform: scale(1.2);
+      -ms-transform: scale(1.2);
+          transform: scale(1.2);
 }
 
 .name {
+	color: rgb(199,180,180);
   margin: 4px 0 4px 0;
-  color: rgb(199,180,180);
 }
 
 .msg-title {
@@ -205,8 +218,8 @@ INDEX
 }
 
 .date {
+	margin-right: 30px;
   text-align: right;
-  margin-right: 30px;
 }
 
 /* ===========================================
@@ -214,8 +227,13 @@ SIGN-UP
 ============================================ */
 
 .form-wrapper {
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
-  flex-direction: column;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
   width: 100%;
 }
 
@@ -257,9 +275,9 @@ LOG-IN
 }
 
 input {
+	border: 1px solid black;
+	height: 15px;
   margin-bottom: 5px;
-  border: 1px solid black;
-  height: 15px;
   padding: 3px;
 }
 
@@ -277,16 +295,16 @@ button[type='submit'] {
 }
 
 .back {
-  position: absolute;
-  bottom: 10px;
+	bottom: 10px;
+	color: black;
+	position: absolute;
   right: 20px;
   text-decoration: none;
-  color: black;
 }
 
 .back:hover {
+	font-weight: bold;
   text-decoration: underline;
-  font-weight: bold;
 }
 
 .error-msg {
@@ -333,6 +351,12 @@ textarea {
 
 input,
 textarea {
+	position: relative;
   z-index: 9999;
-  position: relative;
+}
+
+.unsuccesfulLvlUp {
+	color: rgb(173,54,103);
+	margin-left: 30px;
+	margin-top: 10px;
 }
