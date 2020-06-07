@@ -40,8 +40,6 @@ passport.use(
       if (err) {
         return done(err);
       }
-      console.log('username: ', username);
-      console.log('user: ', user);
 
       if (!user) {
         return done(null, false, { message: 'Incorrect email' });
@@ -54,7 +52,6 @@ passport.use(
           return done(null, false, { message: 'Incorrect password' });
         }
       });
-      return done(null, user);
     });
   })
 );
