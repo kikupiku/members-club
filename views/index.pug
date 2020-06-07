@@ -32,7 +32,8 @@ block content
       | Upgrade to ADMIN to have the power to delete skanky messages.
       
   div.messages-wrapper
-    for message in messages
+    - let messagesRev = messages.reverse();
+    for message in messagesRev
       div.message-container
         div.delete-div
         if (currentUser)
