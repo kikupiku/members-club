@@ -1,4 +1,11 @@
-This project is part of the NODE JS curriculum on the Odin Project.
+### WHISPER CAMPAIGN
+
+This project is part of [the Odin Project](https://www.theodinproject.com/)'s Node.js curriculum.
+
 The aim is to practice password authentication, different levels of access to data for users, security, etc.
 
-The Whisper Campaign title, and existing messages are my small homage to the show Brooklyn Nine-Nine.
+I used [mongoDB](https://www.mongodb.com/) as my database, with [mongoose](https://mongoosejs.com/) model building, and [pug](https://pugjs.org/api/getting-started.html) for templates.
+
+The Whisper Campaign title, and pre-existing messages are my small homage to the TV comedy show [Brooklyn Nine-Nine](https://www.imdb.com/title/tt2467372/).
+
+Live version of the project available **[HERE](https://whisper-campaign.herokuapp.com/)**
