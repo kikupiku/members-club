@@ -9,3 +9,6 @@ I used [mongoDB](https://www.mongodb.com/) as my database, with [mongoose](https
 The Whisper Campaign title, and pre-existing messages are my small homage to the TV comedy show [Brooklyn Nine-Nine](https://www.imdb.com/title/tt2467372/).
 
 Live version of the project available **[HERE](https://whisper-campaign.herokuapp.com/)**
+
+
+![gif on the project in action][https://res.cloudinary.com/kikupiku/image/upload/v1597065130/project-gifs/whisper-campaign_idgvdk.gif]
