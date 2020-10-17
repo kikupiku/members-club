@@ -11,4 +11,4 @@ The Whisper Campaign title, and pre-existing messages are my small homage to the
 Live version of the project available **[HERE](https://whisper-campaign.herokuapp.com/)**
 
 
-![gif on the project in action](https://res.cloudinary.com/kikupiku/image/upload/v1597065130/project-gifs/whisper-campaign_idgvdk.gif)
+![gif on the project in action](https://res.cloudinary.com/kikupiku/image/upload/v1602937950/project-gifs/whisper-campaign_movgza.gif)
